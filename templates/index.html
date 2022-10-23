@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Astronomy Picture of the Day </title>
+</head>
+
+<body bgcolor="#F4F4FF">
+    <center>
+        <h1> Astronomy Picture of the Day </h1>
+        <p>
+            {{ date }}
+            <br>
+            <img src="{{ image_url }}" style="max-width:100%">
+        </p>
+    </center>
+    <center>
+        <b>{{ image_title }}</b>
+        <br>
+        <b> Image Credit & <a href="https://creativecommons.org/licenses/by/2.0/">License</a>: </b>
+        <a href="https://www.nasa.gouv">NASA</a>
+    </center>
+    <p>
+        <b>Explanation: </b>
+        {{ explanation}}
+    </p>
+</body>
+
+</html>
