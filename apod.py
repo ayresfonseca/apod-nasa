@@ -21,13 +21,18 @@ def index():
 
     params = {"api_key": API_KEY}
 
-    result = requests.get(URL_ENDPOINT, params=params, timeout=10).json()
-    date = datetime.strptime(result["date"], "%Y-%m-%d")
+    result = requests.get(URL_ENDPOINT, params=params, timeout=10)
+    content = result.json()
+    date = datetime.strptime(content.get("date"), "%Y-%m-%d")
+    print(
+        f'X-Ratelimit-Limit: {result.headers.get("X-Ratelimit-Limit")}, X-Ratelimit-Remaining: {result.headers.get("X-Ratelimit-Remaining")}'
+    )
 
     return render_template(
         "index.html",
         date=date.strftime("%Y %B %d"),
-        image_url=result["url"],
-        image_title=result["title"],
-        explanation=result["explanation"],
+        image_url=content.get("url"),
+        image_title=content.get("title"),
+        image_copyright=content.get("copyright", "Public domain"),
+        explanation=content.get("explanation"),
     )
