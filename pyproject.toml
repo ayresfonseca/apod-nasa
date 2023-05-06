@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apod-nasa"
-version = "0.1.2"
+version = "0.2.0"
 description = ""
 authors = ["Ayres Fonseca <ayres.fonseca@yahoo.ca>"]
 license = "MIT"
