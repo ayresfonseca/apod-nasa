@@ -1,8 +1,8 @@
-FROM python:3.10.8-slim
+FROM python:3.10.11-slim
 
-LABEL org.opencontainers.image.source "https://github.com/ayresfonseca/apod-nasa"
-LABEL org.opencontainers.image.description "Minimal application Astronomy Picture of the Day"
-LABEL org.opencontainers.image.licenses "MIT"
+LABEL org.opencontainers.image.source="https://github.com/ayresfonseca/apod-nasa"
+LABEL org.opencontainers.image.description="Minimal application Astronomy Picture of the Day"
+LABEL org.opencontainers.image.licenses="MIT"
 
 ENV WORKERS=2
 WORKDIR /app
