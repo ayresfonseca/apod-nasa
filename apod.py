@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 from flask import Flask
 from flask import render_template
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 URL_ENDPOINT = "https://api.nasa.gov/planetary/apod"
 API_KEY = "DEMO_KEY"
@@ -36,3 +37,14 @@ def index():
         image_copyright=content.get("copyright", "Public domain"),
         explanation=content.get("explanation"),
     )
+
+
+@app.route("/flask-healthz")
+def health_check():
+    """
+    Health check function
+    """
+    return "success"
+
+
+app = ProxyFix(app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
