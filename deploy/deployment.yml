@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apod
+  labels:
+    app: apod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apod
+  template:
+    metadata:
+      labels:
+        app: apod
+    spec:
+      containers:
+        - image: nginx:stable
+          name: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: default-conf
+              mountPath: /etc/nginx/conf.d
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+              httpHeaders:
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+
+        - image: ghcr.io/ayresfonseca/apod-nasa:latest
+          name: flask-app
+          livenessProbe:
+            httpGet:
+              path: /flask-healthz
+              port: 8000
+              httpHeaders:
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: default-conf
+          configMap:
+            name: nginx-default-conf
+            items:
+              - key: default.conf
+                path: default.conf
+      imagePullSecrets:
+        - name: ghcr-acme
