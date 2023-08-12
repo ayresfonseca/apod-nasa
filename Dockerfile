@@ -12,9 +12,9 @@ COPY poetry.lock ./
 COPY apod.py ./
 COPY templates ./templates/
 
-RUN  apt-get update && apt-get upgrade && apt-get install -y build-essential && \
+RUN  apt-get update && apt-get upgrade -y && apt-get install -y build-essential && \
         rm -rf /var/lib/apt/lists/*
-RUN  pip install --no-cache-dir "poetry==1.4.2" && \
+RUN  pip install --no-cache-dir "poetry==1.5.1" && \
         poetry config virtualenvs.create false && \
         poetry install --no-root --without dev
 
