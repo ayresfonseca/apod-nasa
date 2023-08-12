@@ -5,6 +5,8 @@ metadata:
   name: apod
   annotations:
     kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.middlewares: default-https-redirectscheme@kubernetescrd
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
     - host: apod.anetwork.cloud
@@ -17,3 +19,7 @@ spec:
                 name: apod
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - apod.anetwork.cloud
+      secretName: tls-apod-ingress-dns
