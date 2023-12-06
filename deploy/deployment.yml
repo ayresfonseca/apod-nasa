@@ -66,4 +66,4 @@ spec:
               - key: default.conf
                 path: default.conf
       imagePullSecrets:
-        - name: ghcr-acme
+        - name: ghcr-apod
