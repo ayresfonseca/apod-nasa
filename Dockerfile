@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim
+FROM python:3.12.8-slim
 
 LABEL org.opencontainers.image.source="https://github.com/ayresfonseca/apod-nasa"
 LABEL org.opencontainers.image.description="Minimal application Astronomy Picture of the Day"
@@ -14,7 +14,7 @@ COPY templates ./templates/
 
 RUN  apt-get update && apt-get upgrade -y && apt-get install -y build-essential && \
         rm -rf /var/lib/apt/lists/*
-RUN  pip install --no-cache-dir "poetry==1.5.1" && \
+RUN  pip install --no-cache-dir "poetry==2.0.1" && \
         poetry config virtualenvs.create false && \
         poetry install --no-root --without dev
 
