@@ -1,4 +1,4 @@
-FROM python:3.12.8-slim
+FROM python:3.12.10-slim
 
 LABEL org.opencontainers.image.source="https://github.com/ayresfonseca/apod-nasa"
 LABEL org.opencontainers.image.description="Minimal application Astronomy Picture of the Day"
