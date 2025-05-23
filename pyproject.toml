@@ -1,6 +1,6 @@
 [project]
 name = "apod-nasa"
-version = "0.4.1"
+version = "0.4.2"
 description = "Minimal application Astronomy Picture of the Day based on NASA APOD API"
 authors = [
     { name = "Ayres Fonseca", email = "ayres.fonseca@gmail.com" }
