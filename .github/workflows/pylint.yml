@@ -5,9 +5,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,9 +27,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install --no-cache-dir poetry flake8 pylint
           poetry config virtualenvs.create false
-          poetry install --no-root --without dev
+          poetry install --with dev
 
-      - name: Analysing the code with pylint and flake8
+      - name: Analyse the code with flake8 and pylint
         run: |
           flake8 --extend-ignore=E501 $(git ls-files '*.py')
           pylint --disable=C0301 $(git ls-files '*.py')
