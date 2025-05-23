@@ -32,8 +32,9 @@ def index():
         content = result.json()
         date = datetime.strptime(content.get("date"), "%Y-%m-%d")
         logging.info(
-            f'X-Ratelimit-Limit: {result.headers.get("X-Ratelimit-Limit")}, '
-            f'X-Ratelimit-Remaining: {result.headers.get("X-Ratelimit-Remaining")}'
+            "X-Ratelimit-Limit: %s, X-Ratelimit-Remaining: %s",
+            result.headers.get("X-Ratelimit-Limit"),
+            result.headers.get("X-Ratelimit-Remaining"),
         )
         return render_template(
             "index.html",
@@ -43,8 +44,8 @@ def index():
             image_copyright=content.get("copyright", "Public domain"),
             explanation=content.get("explanation"),
         )
-    except Exception as e:
-        logging.error(f"Error while calling NASA API: {e}")
+    except requests.RequestException as e:
+        logging.error("Error while calling NASA API: %s", e)
         return render_template(
             "index.html",
             date="N/A",
