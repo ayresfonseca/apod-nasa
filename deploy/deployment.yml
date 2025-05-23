@@ -34,11 +34,16 @@ spec:
             httpGet:
               path: /healthz
               port: 80
-              httpHeaders:
             initialDelaySeconds: 15
             periodSeconds: 30
             successThreshold: 1
             failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
 
         - image: ghcr.io/ayresfonseca/apod-nasa:latest
           name: flask-app
@@ -53,11 +58,16 @@ spec:
             httpGet:
               path: /flask-healthz
               port: 8000
-              httpHeaders:
             initialDelaySeconds: 15
             periodSeconds: 30
             successThreshold: 1
             failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
       volumes:
         - name: default-conf
           configMap:
