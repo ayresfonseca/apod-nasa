@@ -1,19 +1,24 @@
-[tool.poetry]
+[project]
 name = "apod-nasa"
-version = "0.4.0"
-description = ""
-authors = ["Ayres Fonseca <ayres.fonseca@yahoo.ca>"]
-license = "MIT"
+version = "0.4.1"
+description = "Minimal application Astronomy Picture of the Day based on NASA APOD API"
+authors = [
+    { name = "Ayres Fonseca", email = "ayres.fonseca@gmail.com" }
+]
+license = {text = "MIT"}
 readme = "README.md"
-packages = [{include = "apod_nasa"}]
+requires-python = ">=3.12"
+package-mode = false
 
-[tool.poetry.dependencies]
-python = "^3.12"
-Flask = "^2.2.2"
-requests = "^2.28.1"
-uwsgi = "^2.0.20"
-werkzeug = "^3.0.6"
+dependencies = [
+    "Flask (>=2.2.2)",
+    "requests (>=2.28.1)",
+    "uwsgi (>=2.0.20)",
+    "werkzeug (>=3.0.6)"
+]
 
+[tool.poetry]
+package-mode = false
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
@@ -22,5 +27,5 @@ pylint = "^2.15.5"
 yamllint = "^1.28.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
