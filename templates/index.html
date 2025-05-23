@@ -1,29 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title> Astronomy Picture of the Day </title>
+    <meta charset="UTF-8">
+    <title>Astronomy Picture of the Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #F4F4FF;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2em;
+        }
+        h1 {
+            color: #2d3a4b;
+            margin-bottom: 0.5em;
+        }
+        .apod-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1em 0;
+        }
+        .meta {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 1em;
+        }
+        .explanation {
+            margin-top: 2em;
+            line-height: 1.6;
+        }
+        .credit {
+            font-size: 0.95em;
+            color: #888;
+        }
+    </style>
 </head>
-
-<body bgcolor="#F4F4FF">
-    <center>
-        <h1> Astronomy Picture of the Day </h1>
-        <p>
-            {{ date }}
-            <br>
-            <img src="{{ image_url }}" style="max-width:100%">
-        </p>
-    </center>
-    <center>
-        <b>{{ image_title }}</b>
-        <br>
-        <b> Image Credit & Copyright: </b>
-        {{ image_copyright }}
-    </center>
-    <p>
-        <b>Explanation: </b>
-        {{ explanation}}
-    </p>
+<body>
+    <div class="container">
+        <h1>Astronomy Picture of the Day</h1>
+        <div class="meta">
+            <strong>Date:</strong> {{ date }}
+        </div>
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="{{ image_title }}" class="apod-image">
+        {% else %}
+            <div style="color: #c00; margin: 1em 0;">No image available.</div>
+        {% endif %}
+        <h2>{{ image_title }}</h2>
+        <div class="credit">
+            <strong>Image Credit &amp; Copyright:</strong>
+            {{ image_copyright }}
+        </div>
+        <div class="explanation">
+            <strong>Explanation:</strong><br>
+            {{ explanation }}
+        </div>
+    </div>
 </body>
-
 </html>
