@@ -1,13 +1,13 @@
 [project]
 name = "apod-nasa"
-version = "0.4.3"
+version = "0.4.4"
 description = "Minimal application Astronomy Picture of the Day based on NASA APOD API"
 authors = [
     { name = "Ayres Fonseca", email = "ayres.fonseca@gmail.com" }
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 package-mode = false
 
 dependencies = [
