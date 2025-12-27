@@ -1,4 +1,4 @@
-FROM python:3.12.10-slim
+FROM python:3.14.2-slim
 
 LABEL org.opencontainers.image.source="https://github.com/ayresfonseca/apod-nasa"
 LABEL org.opencontainers.image.description="Minimal application Astronomy Picture of the Day"
@@ -18,7 +18,7 @@ COPY pyproject.toml ./
 COPY poetry.lock ./
 
 # Install Poetry and project dependencies
-RUN pip install --no-cache-dir "poetry==2.0.1" && \
+RUN pip install --no-cache-dir "poetry==2.2.1" && \
     poetry config virtualenvs.create false && \
     poetry install --without dev
 
