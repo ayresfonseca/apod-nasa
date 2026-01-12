@@ -1,0 +1,25 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: apod
+  namespace: apod
+  labels:
+    external-dns: "true"
+spec:
+  parentRefs:
+    - name: eg-private
+      namespace: envoy-gateway-system
+  hostnames:
+    - "apod.anetwork.cloud"
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: apod
+          port: 80
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
