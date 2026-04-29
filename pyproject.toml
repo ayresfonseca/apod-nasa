@@ -12,7 +12,7 @@ package-mode = false
 
 dependencies = [
     "Flask (>=2.2.2)",
-    "requests (>=2.28.1)",
+    "requests (>=2.33.0)",
     "uwsgi (>=2.0.20)",
     "werkzeug (>=3.0.6)"
 ]
