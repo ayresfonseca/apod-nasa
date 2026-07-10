@@ -45,7 +45,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
 
-        - image: ghcr.io/ayresfonseca/apod-nasa:latest
+        - image: ghcr.io/ayresfonseca/apod-nasa:0.4.7
           name: flask-app
           resources:
             requests:
